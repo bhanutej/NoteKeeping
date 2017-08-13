@@ -1,0 +1,7 @@
+<% if @errors.present? %>
+  $('.note-form-container #error_content').html("<%= j render 'shared/errors', errors: @errors %>");
+<% else %>
+  $('.notes-container .notes-list-content').html("<%= j render 'notes/mynotes_list', notes: @notes, dashboard: false %>");
+  hideModel();
+  showNotification("success", "Successfully created");
+<% end %>

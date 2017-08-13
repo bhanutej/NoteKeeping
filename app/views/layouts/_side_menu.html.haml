@@ -1,0 +1,30 @@
+.sidebar{ data: { color: 'purple', image: '' } }
+  /
+    Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+    Tip 2: you can also add an image using data-image tag
+  .logo
+    %a.simple-text{:href => "/"}
+      = t('note_keeping')
+  .sidebar-wrapper
+    %ul.nav
+      %li
+        %a{:href => dashboard_home_index_path }
+          %i.material-icons dashboard
+          %p
+            = t('dashboard')
+      %li
+        %a{ href: notes_path }
+          %i.material-icons assignment
+          %p
+            = t('my_notes')
+      %li
+        %a{:href => shared_notes_notes_path }
+          %i.material-icons assignment_ind
+          %p
+            = t('shared_with_me')
+      %li
+        %a{ href: "#{destroy_user_session_path}", data: { method: 'delete' } }
+          %i.material-icons exit_to_app
+          %p
+            = t('sign_out')

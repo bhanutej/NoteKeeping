@@ -1,0 +1,32 @@
+%table.table
+  %thead.text-primary
+    %th.text-left
+      = t('users')
+    %th.text-center
+  %tbody
+    - if @users.present?
+      - @users.each do |user|
+        %tr
+          %td
+            = user.email.truncate(25)
+          %td.td-actions.text-right
+            = form_tag( '/users/shared_to', methos: :post, remote: true ) do
+              - user_note = user.user_notes.where(note_id: @note_id)
+              %input{ type: 'hidden', name: 'note_id', value: @note_id }
+              %input{ type: 'hidden', name: 'user_id', value: user.id }
+              %input{ type: 'hidden', name: 'sharenote', value: @sharenote }
+              %input{:name => 'mode', :type => 'radio', :value => 'read', checked: user_note.present? && user_note.first.mode == 'read'}
+                Read
+              %input{:name => 'mode', :type => 'radio', :value => 'update', checked: user_note.present? && user_note.first.mode == 'update'}
+                Update
+              %input{:name => 'mode', :type => 'radio', :value => 'owner', checked: user_note.present? && user_note.first.mode == 'owner'}
+                Owner
+              %a.btn.btn-default{ href:  remove_users_path(note_id: @note_id, user_id: user.id, mode: user_note.first.present? ? user_note.first.mode : nil, sharenote: @sharenote), data: { remote: true } }
+                Remove
+              %button.btn.btn-default{ type: 'submit' }
+                Save
+
+    - else
+      %tr
+        %td
+          = t('no_other_users_sign_up')

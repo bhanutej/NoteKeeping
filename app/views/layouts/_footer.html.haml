@@ -1,0 +1,8 @@
+.container-fluid
+  %p.copyright.pull-right
+    ©
+    :javascript
+              document.write(new Date().getFullYear())
+    = succeed "," do
+      %a{:href => 'mailto:bhanuwithrails@gmail.com'}
+        = t('email')

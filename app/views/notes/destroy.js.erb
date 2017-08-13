@@ -1,0 +1,3 @@
+$('.notes-container .notes-list-content').html("<%= j render 'notes/mynotes_list', notes: @notes, dashboard: false %>");
+hideConfirmModel();
+showNotification("success", "Successfully deleted");

@@ -1,0 +1,40 @@
+.note-form-container
+  = form_for(@note, remote: true) do |f|
+    .note-content
+      .row
+        .col-md-12
+          #error_content
+      .row
+        .col-md-12
+          .form-group.label-floating
+            = f.label :Note, class: 'control-label'
+            = f.text_area :note, class: 'form-control'
+            %input{ type: 'hidden', name: 'sharenote', value: "#{@sharenote}" }
+      .row
+        .col-md-12
+          .form-group.label-floating
+            = f.label :Tags, class: 'control-label'
+            %select#tags_list{ name: 'tags[]', multiple: :multiple }
+              -if @note.note_tags.present?
+                - @note.note_tags.each do |tag|
+                  %option{ value: "tag@$@#{tag.tag_id}", selected: (@note.note_tags.include?tag) }
+                    = tag.tag.tag
+        - if action_name != 'show'
+          .row
+            .col-md-12
+              .btn-action{ style: 'text-align: right;' }
+                = f.submit :Save, class: 'btn btn-primary'
+
+:javascript
+
+  $(function(){
+
+    $('.note-form-container #tags_list').selectize({
+      create: true,
+      plugins: ['remove_button'],
+      sortField: {
+        field: 'text',
+        direction: 'asc'
+      }
+    });
+  });

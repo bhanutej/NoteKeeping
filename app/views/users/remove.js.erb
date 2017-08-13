@@ -1,0 +1,12 @@
+<% if @error.present? %>
+  showNotification("warning", "<%= @error %>");
+<% else %>
+  var modelEle = $("#myModal");
+  modelEle.find(".modal-title").html("Users");
+  <% if @sharenote == 'false' %>
+    modelEle.find(".modal-body").html("<%= j render 'users/users_list' %>");
+  <% else %>
+    modelEle.find(".modal-body").html("<%= j render 'users/shared_users_list' %>");
+  <% end %>
+  showNotification("success", "Successfully updated");
+<% end %>

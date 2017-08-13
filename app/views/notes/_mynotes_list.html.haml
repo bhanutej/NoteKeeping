@@ -1,0 +1,33 @@
+%table.table
+  %thead.text-primary
+    %th.text-left
+      = t('note')
+    - unless dashboard
+      %th.text-center
+  %tbody
+    - if notes.present?
+      - notes.each do |note|
+        %tr
+          %td
+            = note.note
+            - if dashboard
+              %div.bootstrap-tagsinput
+                - tags = Tag.where(id: note.note_tags.map(&:tag_id))
+                - tags.each do |tag|
+                  %a{ href: tag_notes_notes_path(tag_id: tag.id), data: { remote: true } }
+                    %span.tag.label.label-info
+                      = tag.tag
+                      %span.notification
+                        ="(#{tag.note_tags.size})"
+          - unless dashboard
+            %td.td-actions.text-right
+              %a.btn.btn-success.btn-simple.btn-xs{ href: users_path(note_id: note.id, sharenote: 'false'), data: { remote: true } }
+                %i.fa.fa-share-alt-square
+              %a.btn.btn-success.btn-simple.btn-xs{ href: edit_note_path(note.id, sharenote: 'false'), data: { remote: true } }
+                %i.fa.fa-edit
+              %a.btn.btn-danger.btn-simple.btn-xs.btn-delete{ data: { href: note_path(note.id), toggle: 'modal', target: '#confirm_modal'  } }
+                %i.fa.fa-trash
+    - else
+      %tr
+        %td
+          = t('create_note')

@@ -1,0 +1,30 @@
+.content
+  .container-fluid
+    .row
+      .col-md-12
+        .notes-container#my_note_container
+          .card
+            .card-header{ 'data-background-color': 'purple' }
+              %div
+                %h4.title
+                  = t('my_notes')
+                %p.category
+                  = t('my_notes')
+              .new-btn-content
+                %a.new-btn{ href: new_note_path, data: { remote: true, method: :get } }
+                  %i.material-icons{ style: 'font-size: 30px;' } add_circle
+            .card-content.table-responsive.notes-list-content
+              = render 'notes/mynotes_list', notes: @notes, dashboard: false
+
+:javascript
+
+  $(function(){
+    $(".notes-container").on('click', ".btn-delete", function(e){
+      e.preventDefault();
+      var url = $(this).data('href');
+      var confirmModelEle = $("#confirm_modal");
+      confirmModelEle.find(".modal-title").html("Are you sure?");
+      confirmModelEle.find(".modal-body").html("Are you sure?, You want to delete Note?");
+      confirmModelEle.find(".modal-footer .btn-info").attr({"href": url, "data-remote": true, "data-method": "delete"});
+    });
+  });

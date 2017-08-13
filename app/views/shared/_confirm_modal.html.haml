@@ -1,0 +1,13 @@
+#confirm_modal.modal.fade{ 'aria-hidden': true, 'aria-labelledby': 'myModalLabel', role: 'dialog', tabindex: '-1' }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{ 'aria-hidden': true, 'data-dismiss': 'modal', type: 'button' } ×
+        %h4#myModalLabel.modal-title
+      .modal-body
+        #error_content
+      .modal-footer
+        %a.btn.btn-info.btn-simple
+          = t('button.yes')
+        %a.btn.btn-default.btn-simple{ 'data-dismiss': 'modal', style: 'margin-bottom: 10px;' }
+          = t('button.no')

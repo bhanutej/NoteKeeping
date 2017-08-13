@@ -1,0 +1,11 @@
+<% if @errors.present? %>
+  $('.note-form-container #error_content').html("<%= j render 'shared/errors', errors: @errors %>");
+<% else %>
+  <% if @sharenote == 'true' %>
+    $('.notes-container .notes-list-content').html("<%= j render 'notes/shared_notes_list', notes: @notes, dashboard: false %>");
+  <% else %>
+    $('.notes-container .notes-list-content').html("<%= j render 'notes/mynotes_list', notes: @notes, dashboard: false %>");
+  <% end %>
+  hideModel();
+  showNotification("success", "Successfully updated");
+<% end %>

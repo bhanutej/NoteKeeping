@@ -1,0 +1,11 @@
+%nav.navbar.navbar-transparent.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{"data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => '#', style: 'text-transform: uppercase;font-weight: bold; font-size: 12px;'}
+        User:
+        = current_user.present? ? current_user.email : 'User'

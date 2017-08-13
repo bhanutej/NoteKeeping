@@ -1,0 +1,49 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  app_name: NoteKeeping
+  my_notes: My Notes
+  shared_with_me: Shared With Me
+  email: "bhanuwithrails@gmail.com"
+  note_keeping: Note Keeping
+  dashboard: Dashboard
+  sign_out: Sign Out
+  note: Note
+  create_note: "Create Note!!!"
+  no_one_has_shared: "No one has shared!!!"
+  no_access_to_remove: "You are not supposed to remove mode of your owner!!!"
+  no_access_to_change_mode: "You are not supposed to change mode of your owner!!!"
+  no_other_users_sign_up: "No other users sign up!!!"
+  not_have_mode: "Selected user does not have any mode!!!"
+  select_mode: "Please select one of the mode!!!"
+  tagging_notes: Tagging Notes
+  users: Users
+  toastr:
+    success: success
+  toastr:
+    message:
+      created: Successfully created
+      deleted: Successfully deleted
+      updated: Successfully updated
+  button:
+    yes: YES
+    no: NO

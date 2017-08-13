@@ -1,0 +1,10 @@
+%table.table
+  %thead.text-primary
+    %th.text-left
+      = t('tagging_notes')
+  %tbody
+    - if @note_tags.present?
+      - @note_tags.each do |note_tag|
+        %tr
+          %td
+            = note_tag.note.note

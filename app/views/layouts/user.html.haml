@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: 'utf-8'}/
+    %meta{content: 'IE=edge,chrome=1', :'http-equiv' => 'X-UA-Compatible'}/
+    %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}/
+    %meta{content: 'NoteKeeping', name: 'application-name'}/
+    %title= content_for?(:title) ? yield(:title) : app_title
+    %meta{content:content_for?(:description) ? yield(:description) : '', name: 'description'}/
+    %meta{content:content_for?(:author) ? yield(:author) : 'Imaginnovate', name: 'author'}/
+
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', media: 'all'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css', media: 'all'
+    = stylesheet_link_tag '///fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons', media: 'all'
+
+    = javascript_include_tag 'application', 'data-turbolinks-track' => false
+    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'
+    = csrf_meta_tags
+  %body{ "data-no-turbolink" => "true" }
+    .wrapper
+      = render 'layouts/side_menu'
+      .main-panel
+        = render 'layouts/top_nav_menu'
+        .content
+          = yield
+        %footer.footer
+          = render 'layouts/footer'
+
+    = render 'shared/modal'
+    = render 'shared/confirm_modal'

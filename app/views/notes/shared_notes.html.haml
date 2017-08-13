@@ -1,0 +1,13 @@
+.content
+  .container-fluid
+    .row
+      .col-md-12
+        .notes-container
+          .card
+            .card-header{ 'data-background-color': 'purple' }
+              %h4.title
+                = t('shared_with_me')
+              %p.category
+                = t('shared_with_me')
+            .card-content.table-responsive.notes-list-content
+              = render 'notes/shared_notes_list', notes: @notes, dashboard: false

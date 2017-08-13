@@ -1,0 +1,23 @@
+.content
+  .container-fluid
+    .row
+      .col-md-6
+        .notes-container
+          .card
+            .card-header{ 'data-background-color': 'purple' }
+              %h4.title
+                = t('my_notes')
+              %p.category
+                = t('my_notes')
+            .card-content.table-responsive.notes-list-content
+              = render 'notes/mynotes_list', notes: @my_notes, dashboard: true
+      .col-md-6
+        .notes-container
+          .card
+            .card-header{ 'data-background-color': 'purple' }
+              %h4.title
+                = t('shared_with_me')
+              %p.category
+                = t('shared_with_me')
+            .card-content.table-responsive.notes-list-content
+              = render 'notes/shared_notes_list', notes: @shared_notes, dashboard: true
